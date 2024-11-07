@@ -5,12 +5,15 @@ services:
   minecraft:
     image: itzg/minecraft-server:java21-alpine
     env_file:
-      - ./config/.env.minecraft
+      - ./env/.env.minecraft
+    ports:
+      - 25565:25565
     volumes:
       - ./data:/data
+      - ./config:/data/config
 
   # https://playit.gg agent to expose the server to everyone.
   playit:
     image: ghcr.io/playit-cloud/playit-agent:0.15
     env_file:
-      - ./config/.env.playit
+      - ./env/.env.playit
