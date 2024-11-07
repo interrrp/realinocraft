@@ -11,9 +11,11 @@ services:
     volumes:
       - ./data:/data
       - ./config:/data/config
+    restart: unless-stopped
 
   # https://playit.gg agent to expose the server to everyone.
   playit:
     image: ghcr.io/playit-cloud/playit-agent:0.15
     env_file:
       - ./env/.env.playit
+    restart: unless-stopped
